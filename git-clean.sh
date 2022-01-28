@@ -46,6 +46,7 @@ done;
 
 # Get response
 echo -e "${YELLOW}Would you like to remove them locally?${NC} (y/n) \c";
+
 read response;
 
 if [ "$response" = "y" ]; then
@@ -53,6 +54,7 @@ if [ "$response" = "y" ]; then
     echo -e " - Deleting ${branch}";
     git branch -D $branch --quiet;
   done;
+  
   echo -e "${GREEN}Your branches have been cleaned!${NC}";
 else
   echo -e "${RED}Suit yourself!${NC}";
