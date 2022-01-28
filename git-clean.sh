@@ -13,8 +13,14 @@ echo -e "${YELLOW}▄█ ▀█▄▐█· ▐█.▪    ██ ▄▄██▪ 
 echo -e "${YELLOW}▐█▄▪▐█▐█▌ ▐█▌·    ▐███▌▐█▌▐▌▐█▄▄▌▐█ ▪▐▌██▐█▌${NC}"
 echo -e "${YELLOW}·▀▀▀▀ ▀▀▀ ▀▀▀     ·▀▀▀ .▀▀▀  ▀▀▀  ▀  ▀ ▀▀ █▪${NC}"
 
+if [ ! -d "./.git" ]; then
+  echo -e "${RED}Oops! The current directory does not contain a git repo.${NC}";
+  exit 0;
+fi
+
 # Fetch!
 echo -e "${YELLOW}Fetching branches${NC}";
+
 git fetch --prune --quiet
 
 # Iterate
@@ -48,7 +54,7 @@ if [ "$response" = "y" ]; then
     echo -e " - Deleting ${branch}";
     git branch -D $branch --quiet;
   done;
-
+  
   echo -e "${GREEN}Your branches have been cleaned!${NC}";
 else
   echo -e "${RED}Suit yourself!${NC}";
